@@ -62,7 +62,6 @@ void watch_dir_r(char* path) {
 	vec_push_back(notify_wds, (void*) wd);
 
 	// Get sub-directories
-	printf("-> %s\n", path);
 	DIR* dir = opendir(path);
 	if(!dir) {
 		error("Can not open directory.");
@@ -113,7 +112,6 @@ void* watch(void* args) {
 		success("[cdemon] Restarting instance...");
 		run();
 
-		pthread_mutex_lock(&restart_lock);
 		for(char* ptr = buf; ptr < buf + len; ptr+= EVENT_SIZE + event->len) {
 			event = (const struct inotify_event*) ptr;
 
@@ -144,11 +142,5 @@ void* watch(void* args) {
 				free(wd_str);
 			}
 		}
-
-		restart = true;
-		pthread_mutex_unlock(&restart_lock);
 	}
-
-
-	char buf[4096] = {0};
 }

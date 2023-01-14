@@ -7,7 +7,6 @@ print_info(const char *msg, color_t color, bool exit_process,
 {
 	char *text_col_bold = col_str_style(color, BOLD);
 
-	// Can't see how to use a ternary operator on an integer (__LINE__)
 	if(print_line) {
 		printf("\n%s%s Line %d: %s%s\n",
 			text_col_bold,

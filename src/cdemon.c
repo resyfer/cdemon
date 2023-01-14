@@ -64,8 +64,6 @@ main(int argc, char** argv)
 		args = &argv[1];
 	}
 
-	pthread_mutex_init(&restart_lock, NULL);
-
 	tpool_t *tpool = tpool_new(2);
 	char* command = argv[2];
 

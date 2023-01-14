@@ -4,9 +4,6 @@
 #include <stdbool.h>
 #include <pthread.h>
 
-static bool restart;
-static pthread_mutex_t restart_lock;
-
 extern char *command;
 extern char **args;
 
